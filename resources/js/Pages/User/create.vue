@@ -25,7 +25,7 @@
                 </div>
                
             
-                <button class="btn btn-primary w-100" type="submit">Crear Usuario</button>
+                <button class="btn btn-primary w-100 text-light" type="submit">Crear Usuario</button>
                 
             </form>
              
@@ -35,12 +35,16 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue"
-import {Inertia, useForm} from "@inertiajs/inertia"
+import {Inertia} from "@inertiajs/inertia"
 export default{
     components: { AppLayout },
-    setup() {
-        const form = {
-            
+    methods: {
+        submit(){
+            Inertia.post(route('users.store'), {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+            })
         }
     },
 

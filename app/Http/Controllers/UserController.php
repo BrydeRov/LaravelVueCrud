@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         //
         User::create($request->all());
-        return Inertia::render('users/create');
+        return  redirect(route('users.index'))->with('UsuarioCreado', 'El usuario se ha creado exitosamente');
     }
 
     /**
