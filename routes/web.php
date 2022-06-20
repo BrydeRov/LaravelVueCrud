@@ -35,6 +35,6 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
     Route::controller(UserController::class)->group(function () {
-        Route::get('/User', 'index');
+        Route::get('/User', 'index')->name('User');
     });
 });
