@@ -9,19 +9,33 @@
 
         <div class="container">
 
+
+            <div v-if="Object.keys(errors).length" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Campos vacios</strong>
+                 <div class="">
+                    <ul>
+                        <li v-for="error in errors" v-bind:key="error">
+                            {{error}}
+                        </li>
+                    </ul>
+                 </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
             <form @submit.prevent="submit">
                  <div class="form-group">
                     <label for="name">Nombre</label>
-                    <input type="text" class="form-control" v-model="name" required>
+                    <input type="text" class="form-control" v-model="name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Correo</label>
-                    <input type="email" class="form-control" v-model="email" aria-describedby="emailHelp" required>
+                    <input type="email" class="form-control" v-model="email" aria-describedby="emailHelp">
                 </div>
 
                 <div class="form-group mb-4">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" v-model="password" required>
+                    <input type="password" class="form-control" v-model="password">
                 </div>
                
             
@@ -36,7 +50,9 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue"
 import {Inertia} from "@inertiajs/inertia"
+
 export default{
+    props: {errors: Object},
     components: { AppLayout },
     methods: {
         submit(){
@@ -49,4 +65,5 @@ export default{
     },
 
 }
+
 </script>

@@ -2,7 +2,7 @@
   <div>
     <Head :title="title" />
 
-    <jet-banner />
+    <jet-banner/>
 
     <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
       <div class="container">

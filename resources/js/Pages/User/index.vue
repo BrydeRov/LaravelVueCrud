@@ -1,9 +1,10 @@
 <template>
     <app-layout>
         <template #header>
-            <h2>Users</h2>
+            <h5>Users</h5>
         </template>
         <div>
+
             
             <Link :href="route('users.create')">
                 <button type="button" class="btn btn-primary btn-lg btn-block my-4 w-100">Crear Usuario</button>
@@ -14,7 +15,6 @@
                     <th scope="col">#id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Fecha Creación</th>
                     <th scope="col">Acción</th>
                     </tr>
                 </thead>
@@ -23,12 +23,17 @@
                     <td scope="row">{{ u.id }}</td>
                     <td scope="row">{{ u.name }}</td>
                     <td scope="row">{{ u.email }}</td>
-                    <td scope="row">{{ u.created_at}}</td>
-                    <td scope="row">Acción</td>
+                    <td scope="row">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                        </div>
+                    </td>
                     </tr>                    
                 </tbody>
             </table>
         </div>
+        
     </app-layout>
 </template>
 
@@ -39,4 +44,5 @@ export default{
     props: ['users'],
     components: { AppLayout, Link }
 }
+
 </script>
