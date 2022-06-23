@@ -1,6 +1,6 @@
 <template>
-  <div v-show="message" class="invalid-feedback" role="alert">
-    <strong>{{ message }}</strong>
+  <div v-show="message" class="alert alert-danger my-2" role="alert">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{message}}
   </div>
 </template>
 

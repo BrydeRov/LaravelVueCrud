@@ -20,13 +20,24 @@
                 </thead>
                 <tbody>
                     <tr v-for="u in users" :key="u.id">
+                    <!-- Fila de id's -->
                     <td scope="row">{{ u.id }}</td>
+                    <!-- Fila de nombres -->
                     <td scope="row">{{ u.name }}</td>
+                    <!-- Fial de correos -->
                     <td scope="row">{{ u.email }}</td>
-                    <td scope="row">
+                    <!-- Botones de Acciones -->
+                    <td scope="row"> 
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
-                        <button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil"></i></button>
+                        <!-- Botón de Borrar -->
+                        <button type="button" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-trash"></i>                           
+                        </button>
+                        <!-- Botón de Editar -->
+                        <button type="button" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-pencil"></i>
+                            <Link :href="route('users.edit')"></Link>
+                        </button>
                         </div>
                     </td>
                     </tr>                    

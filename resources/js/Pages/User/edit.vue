@@ -1,51 +1,32 @@
 <template>
     <app-layout>
 
-        <template #header>
-            <h2>
-                Registrar Usuario
-            </h2>
-        </template>
-
+        <!-- Contenedor de Formulario -->
         <div class="container">
 
-
-            <!-- <div v-if="Object.keys(errors).length" class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Campos vacios</strong>
-                 <div class="">
-                    <ul>
-                        <li v-for="error in errors" v-bind:key="error">
-                            {{error}}
-                        </li>
-                    </ul>
-                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div> -->
-
-
+            <!-- Formulario Para Editar Usuario -->
             <form @submit.prevent="submit">
+                <!-- Input de Nombre -->
                  <div class="form-group">
                     <label for="name">Nombre</label>                        
                     <input type="text" class="form-control" v-model="name">
                     <input-error :message="errors.name" />
                 </div>
+                <!-- Input de Correo -->
                 <div class="form-group">
                     <label for="exampleInputEmail1">Correo</label>
                     <input type="email" class="form-control" v-model="email" aria-describedby="emailHelp">
                     <input-error :message="errors.email" />
                 </div>
-
+                <!-- Input de Contraseña -->
                 <div class="form-group mb-4">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" v-model="password">
                     <input-error :message="errors.password" />
-                </div>
-               
-            
-                <button class="btn btn-primary w-100 text-light" type="submit">Crear Usuario</button>
-                
-            </form>
-             
+                </div>               
+                <!-- Botón para Envíar Formulario -->
+                <button class="btn btn-primary w-100 text-light" type="submit">Crear Usuario</button>                
+            </form>             
         </div>
     </app-layout>
 </template>
