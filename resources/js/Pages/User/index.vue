@@ -36,7 +36,7 @@
                         <!-- Botón de Editar -->
                         <button type="button" class="btn btn-outline-primary btn-sm">
                             <i class="bi bi-pencil"></i>
-                            <Link :href="route('users.edit')"></Link>
+                            <!-- <Link :href="route('users.edit')"></Link> -->
                         </button>
                         </div>
                     </td>

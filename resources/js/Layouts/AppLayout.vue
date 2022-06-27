@@ -23,6 +23,9 @@
             <jet-nav-link :href="route('users.index')" :active="route().current('users.index')">
               User
             </jet-nav-link>
+            <jet-nav-link :href="route('notes.index')" :active="route().current('notes.index')">
+              Notes
+            </jet-nav-link>
           </ul>
 
           <!-- Right Side Of Navbar -->
