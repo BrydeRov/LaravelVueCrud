@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h5>Notas</h5>
+            <h5>Nota: #{{note.id}}</h5>
         </template>
         
         <div class="container">
@@ -29,7 +29,7 @@ import AppLayout from "@/Layouts/AppLayout.vue"
 import {Link} from "@inertiajs/inertia-vue3"
 export default{
     props:{
-        notes: Object,
+        note: Object,
     },
     components: { AppLayout, Link }
 }
