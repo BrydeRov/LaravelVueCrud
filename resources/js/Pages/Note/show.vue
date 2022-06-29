@@ -7,14 +7,14 @@
         <div class="container">
             <div class="d-flex bd-highlight">
                 <!-- División de texto | Division izquierda-->
-                <div class="p-2 flex-shrink-1 bd-highlight">
+                <div class="p-2 flex-fill flex-shrink-1 bd-highlight">
                     <h4>Detalle de nota</h4>
                     <p>{{note.excerpt}}</p>
                 </div>
                 <!-- División de tabla | Division derecha-->
-                <div class="p-2 w-100 bd-highlight">
+                <div class="p-2 w-75 bd-highlight">
                     <!-- Tabla -->
-                    <table class="table table-hover">
+                    <table class="card p-3">
                         {{note.content}}
                     </table>
                 </div>

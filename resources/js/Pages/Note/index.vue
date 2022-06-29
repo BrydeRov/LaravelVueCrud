@@ -7,9 +7,21 @@
         <div class="container">
             <div class="d-flex bd-highlight">
                 <!-- División de texto | Division izquierda-->
-                <div class="p-2 flex-shrink-1 bd-highlight">
-                    <h4>Listado de notas</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat molestiae natus, maxime quas necessitatibus nihil.</p>
+                <div class="p-2 flex-shrink-1 bd-highlight">                    
+                    <div class="d-flex flex-row bd-highlight mb-3 w-100">
+                        <div class="py-2 px-0 flex-fill bd-highlight">
+                            <h4>Listado de notas</h4>
+                        </div>
+                        <div class="py-2 pe-4 bd-highlight">
+                            <Link :href="route('notes.create')" type="button" class="btn btn-outline-dark">
+                                <i class="bi bi-plus-circle"></i>
+                                Crear
+                            </Link>
+                        </div>
+                    </div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, neque.
+                        </p>
                 </div>
                 <!-- División de tabla | Division derecha-->
                 <div class="p-2 w-100 bd-highlight">

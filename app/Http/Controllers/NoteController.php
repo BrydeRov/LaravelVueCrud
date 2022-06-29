@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use App\Http\Requests\NoteCreateRequest;
 use Inertia\Inertia;
 
 class NoteController extends Controller
@@ -18,13 +19,14 @@ class NoteController extends Controller
     }
 
     public function create()
-    {
-        //
+    {   
+        return Inertia::render('Note/create');
     }
 
-    public function store(Request $request)
+    public function store(NoteCreateRequest $request)
     {
-        //
+        Note::create($request->validated());
+        return redirect(route('notes.index'));
     }
 
 
