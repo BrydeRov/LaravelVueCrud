@@ -1,5 +1,5 @@
 <template>
-    <app-layout>
+    <AppLayout>
 
         <template #header>
             <h2>
@@ -23,12 +23,12 @@
                     <label for="NoteContent">Note Content</label>
                 </div>
 
-                <button class="btn my-4 btn-dark w-100" type="submit">Crear Nota</button>
+                <button class="btn my-4 btn-dark w-100" type="submit">Editar Nota</button>
                 
             </form>
              
         </div>
-    </app-layout>
+    </AppLayout>
 </template>
 
 <script>

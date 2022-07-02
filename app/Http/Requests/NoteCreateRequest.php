@@ -24,7 +24,7 @@ class NoteCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'excerpt' => 'required|string|max:500|unique:notes',
+            'excerpt' => 'required|string|max:500',
             'content' => 'required|string|max:1000000',
         ];
     }

@@ -49,8 +49,6 @@ class NoteController extends Controller
     
     public function destroy(Note $note)
       {
-        // $notes->delete();
-
-        // return redirect(Inertia::render(route('notes.index'))); 
+        //
     }
 }
