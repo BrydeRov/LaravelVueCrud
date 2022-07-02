@@ -3,7 +3,7 @@
 
         <template #header>
             <h2>
-                Crear una nota 
+                Editar una nota 
             </h2>
         </template>
 
@@ -11,7 +11,11 @@
             <form @submit.prevent="submit">
 
                 <div class="form-floating mb-3">
-                    <input type="text" v-model="form.excerpt" class="form-control" id="floatingInput" placeholder="Note Excerpt">
+                    <input type="text" 
+                    v-model="form.excerpt" 
+                    class="form-control" 
+                    id="floatingInput" 
+                    placeholder="Note Excerpt">
                     <label for="floatingInput">Note Excerpt</label>
                 </div>
                 <div class="form-floating">
@@ -31,24 +35,21 @@
 import AppLayout from "@/Layouts/AppLayout.vue"
 import {Inertia} from "@inertiajs/inertia"
 import InputError from "@/Jetstream/InputError"
-import { reactive } from 'vue'
+import { useForm } from "@inertiajs/inertia-vue3"
 
 export default{
-    props: {errors: Object},
+    props: {note: Object},
     components: { 
         AppLayout, 
         InputError 
     },
-    setup () {
-        const form = reactive ({
-            'excerpt': null,
-            'content': null
-        })
-
+    setup (props) {
+        const form = useForm ( props.note )
 
         function submit() {
-            Inertia.post(route('notes.store') , form)
+            Inertia.patch(route('notes.update' , props.note) , form)
         }
+
 
         return {form , submit}
     },

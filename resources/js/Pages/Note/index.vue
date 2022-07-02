@@ -56,6 +56,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue"
 import {Link} from "@inertiajs/inertia-vue3"
+
 export default{
     props:{
         notes: Array,
