@@ -15,9 +15,9 @@
                         <div class="py-2 pe-4 bd-highlight">
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                 <!-- Boton para Borrar Nota -->
-                                <Link type="button" class="btn btn-sm btn-outline-dark">
+                                <button @click.prevent="destroy(note.id)" type="button" class="btn btn-sm btn-outline-dark">
                                     <i class="bi bi-trash3"></i>
-                                </Link>
+                                </button>
                                 <!-- Botón para Editar Nota -->
                                 <Link :href="route('notes.edit' , note)" type="button" class="btn btn-sm btn-outline-dark">
                                     <i class="bi bi-pencil"></i>
@@ -43,9 +43,7 @@
 
 <script>
     import AppLayout from "@/Layouts/AppLayout.vue"
-    import {
-        Link
-    } from "@inertiajs/inertia-vue3"
+    import {Link , useForm} from "@inertiajs/inertia-vue3"
     export default {
         props: {
             note: Object,
@@ -53,7 +51,7 @@
         components: {
             AppLayout,
             Link
-        }
+        },
     }
 
 </script>

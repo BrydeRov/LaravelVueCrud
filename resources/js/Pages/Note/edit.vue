@@ -7,23 +7,34 @@
             </h2>
         </template>
 
-        <div class="container border rounded p-5">
+        <div class="container w-75 border rounded p-3">
             <form @submit.prevent="submit">
+                
+                <div class="mb-3">
+                    <label class="form-label" for="floatingTextarea2">Note Excerpt</label>
+                    <textarea 
+                        v-model="form.excerpt"  
+                        class="form-control" 
+                        placeholder="Note Excerpt" 
+                        id="floatingTextarea2" 
+                        style="height: 100px">
+                    </textarea>
+                </div> 
+                
+                <div class="mb-3">
+                    <label class="form-label" for="floatingTextarea2">Note Content</label>
+                    <textarea 
+                        v-model="form.content"  
+                        class="form-control" 
+                        placeholder="Note Content" 
+                        id="floatingTextarea2" 
+                        style="height: 150px"
+                        rows="10">
+                    </textarea>
+                </div> 
 
-                <div class="form-floating mb-3">
-                    <input type="text" 
-                    v-model="form.excerpt" 
-                    class="form-control" 
-                    id="floatingInput" 
-                    placeholder="Note Excerpt">
-                    <label for="floatingInput">Note Excerpt</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" v-model="form.content" class="form-control" id="NoteContent" placeholder="Note Content">
-                    <label for="NoteContent">Note Content</label>
-                </div>
 
-                <button class="btn my-4 btn-dark w-100" type="submit">Editar Nota</button>
+                <button class="btn mt-4 mb-2 btn-dark w-100" type="submit">Editar Nota</button>
                 
             </form>
              

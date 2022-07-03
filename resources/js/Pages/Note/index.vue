@@ -39,9 +39,17 @@
                                 <th scope="row">{{note.id}}</th>
                                 <td>{{note.excerpt}}</td>
                                 <td>
-                                    <Link :href="route('notes.show' , note.id)" type="button" class="btn btn-dark">
-                                        Ver
-                                    </Link>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <!-- Boton para Borrar Nota -->
+                                        <button @click="destroy(note)" type="button" class="btn btn-sm btn-outline-dark">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                        <!-- Botón para Ver Nota -->
+                                        <Link :href="route('notes.show' , note.id)" type="button" class="btn btn-outline-dark">
+                                            <i class="bi bi-three-dots"></i>
+                                        </Link>
+                                    </div>  
+                                    
                                 </td>
                             </tr>
                         </tbody>
@@ -55,13 +63,23 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue"
+import {Inertia} from "@inertiajs/inertia"
 import {Link} from "@inertiajs/inertia-vue3"
 
 export default{
     props:{
-        notes: Array,
+        notes: Object,
     },
-    components: { AppLayout, Link }
+    components: { AppLayout, Link },
+
+    setup() {
+        const destroy = (note) => {
+            if (confirm('Are you sure you want to delete this note?')) {
+                Inertia.delete(route('notes.destroy' , note))
+            }
+        }
+        return {destroy}
+    }
 }
 
 </script>
