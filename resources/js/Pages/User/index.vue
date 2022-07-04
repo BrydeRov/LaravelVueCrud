@@ -10,7 +10,7 @@
             <button type="button" class="btn btn-outline-dark btn-lg btn-block my-4 w-100">Crear Usuario</button>
             </Link>
             <table class="table">
-                <thead class="bg-dark text-light">
+                <thead class="border rounded-top bg-dark text-light">
                     <tr>
                         <th scope="col">#id</th>
                         <th scope="col">Nombre</th>

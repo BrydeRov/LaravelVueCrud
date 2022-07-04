@@ -65,6 +65,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue"
 import {Inertia} from "@inertiajs/inertia"
 import {Link} from "@inertiajs/inertia-vue3"
+import Swal from 'sweetalert2'
 
 export default{
     props:{
@@ -74,9 +75,34 @@ export default{
 
     setup() {
         const destroy = (note) => {
-            if (confirm('Are you sure you want to delete this note?')) {
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((destroy) => {
+            if (destroy.isConfirmed) {
                 Inertia.delete(route('notes.destroy' , note))
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
             }
+            else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+                )
+            }
+            })                               
         }
         return {destroy}
     }
