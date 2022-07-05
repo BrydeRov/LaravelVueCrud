@@ -19,13 +19,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="u in users" :key="u.id">
+                    <tr v-for="user in users">
                         <!-- Fila de id's -->
-                        <td scope="row">{{ u.id }}</td>
+                        <td scope="row">{{ user.id }}</td>
                         <!-- Fila de nombres -->
-                        <td scope="row">{{ u.name }}</td>
+                        <td scope="row">{{ user.name }}</td>
                         <!-- Fial de correos -->
-                        <td scope="row">{{ u.email }}</td>
+                        <td scope="row">{{ user.email }}</td>
                         <!-- Botones de Acciones -->
                         <td scope="row">
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -34,7 +34,7 @@
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                                 <!-- Botón para Ver Usuario -->
-                                <Link :href="route('users.show' , u.id)" type="button" class="btn btn-outline-dark">
+                                <Link :href="route('users.show' , user)" type="button" class="btn btn-outline-dark">
                                     <i class="bi bi-three-dots"></i>
                                 </Link>
                             </div>
@@ -44,7 +44,6 @@
                 </tbody>
             </table>
         </div>
-
     </app-layout>
 </template>
 
@@ -52,7 +51,7 @@
     import AppLayout from "@/Layouts/AppLayout.vue"
     import {Link} from "@inertiajs/inertia-vue3"
     export default {
-        props: ['users'],
+        props: {users: Object},
         components: {
             AppLayout,
             Link

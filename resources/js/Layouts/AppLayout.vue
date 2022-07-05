@@ -26,6 +26,9 @@
             <jet-nav-link :href="route('notes.index')" :active="route().current('notes.index')">
               Notes
             </jet-nav-link>
+            <jet-nav-link :href="route('books.index')" :active="route().current('books.index')">
+              Books
+            </jet-nav-link>
           </ul>
 
           <!-- Right Side Of Navbar -->

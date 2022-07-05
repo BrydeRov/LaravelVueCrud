@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\User;
+// use App\Models\User;
+use Inertia\Inertia;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NoteController;
-use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +41,6 @@ Route::middleware([
     Route::resource("users", UserController::class);
 
     Route::resource("notes", NoteController::class);
+
+    Route::resource("books", BookController::class);
 });
