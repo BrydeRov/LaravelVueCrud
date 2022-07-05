@@ -34,7 +34,7 @@
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                                 <!-- Botón para Ver Usuario -->
-                                <Link type="button" class="btn btn-outline-dark">
+                                <Link :href="route('users.show' , u.id)" type="button" class="btn btn-outline-dark">
                                     <i class="bi bi-three-dots"></i>
                                 </Link>
                             </div>
