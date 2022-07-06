@@ -5,14 +5,14 @@
         </template>
 
         <div class="container">
-            <div class="d-flex bd-highlight">
+            <div class="row">
                 <!-- División de texto | Division izquierda-->
-                <div class="p-2 flex-shrink-1 bd-highlight">
-                    <div class="d-flex flex-row bd-highlight mb-3">
-                        <div class="py-2 px-0 flex-fill bd-highlight">
+                <div class="col-sm-6 mb-4">
+                    <div class="row justify-content-between">
+                        <div class="col-sm-7 mb-4">
                             <h4>{{ note.excerpt }}</h4>
                         </div>
-                        <div class="py-2 pe-4 bd-highlight">
+                        <div class="col-sm-3 mb-4">
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                 <!-- Boton para Borrar Nota -->
                                 <button @click.prevent="destroy(note.id)" type="button" class="btn btn-sm btn-outline-dark">
@@ -30,7 +30,7 @@
                     </p>
                 </div>
                 <!-- División de tabla | Division derecha-->
-                <div class="p-2 bd-highlight w-75">
+                <div class="col-sm-6 ms-auto mb-4">
                     <!-- Tabla -->
                     <table class="card p-3">
                         {{note.content}}

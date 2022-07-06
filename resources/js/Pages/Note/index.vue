@@ -5,26 +5,31 @@
         </template>
         
         <div class="container">
-            <div class="d-flex bd-highlight">
+            <div class="row">
                 <!-- División de texto | Division izquierda-->
-                <div class="p-2 flex-shrink-1 bd-highlight">                    
-                    <div class="d-flex flex-row bd-highlight mb-3 w-100">
-                        <div class="py-2 px-0 flex-fill bd-highlight">
-                            <h4>Listado de notas</h4>
+                <div class="col-sm-6 mb-4">   
+                                         
+                        <h4 class="mb-4">Listado de notas</h4>
+                            
+                        <p class="pe-4">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, corporis. Nobis corporis sequi blanditiis deleniti incidunt atque, voluptatibus, accusantium adipisci, porro harum officia placeat consectetur culpa aliquam illo consequatur error eius. Pariatur sequi fuga amet quo laborum enim obcaecati similique assumenda, at sit minima repudiandae.
+                        </p>
+                </div>
+                <!-- División de tabla | Division derecha-->
+                <div class="col-sm-6 mb-4">
+                    <div class="row justify-content-between">
+                        <div class="col-sm-9">
+                            <div class="input-group mb-3 w-100">
+                                <input v-model="term" type="text" class="form-control" placeholder="Buscar . . ." aria-label="Buscar" aria-describedby="basic-addon1">
+                            </div>
                         </div>
-                        <div class="py-2 pe-4 bd-highlight">
-                            <Link :href="route('notes.create')" type="button" class="btn btn-outline-dark">
+                        <div class="col-3 text-end">
+                            <Link :href="route('notes.create')" type="button" class="btn btn-outline-dark w-100">
                                 <i class="bi bi-plus-circle"></i>
                                 Crear
                             </Link>
                         </div>
                     </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, neque.
-                        </p>
-                </div>
-                <!-- División de tabla | Division derecha-->
-                <div class="p-2 w-100 bd-highlight">
                     <!-- Tabla -->
                     <table class="table table-hover">
                         <thead>
@@ -72,7 +77,16 @@ export default{
         notes: Object,
     },
     components: { AppLayout, Link },
-
+    data(){
+        return{
+            term: ''
+        }
+    },
+    watch:{
+        term: function (value){
+            Inertia.replace(route('notes.index' , {term: value}))
+        }
+    },
     setup() {
         const destroy = (note) => {
             Swal.fire({

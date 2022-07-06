@@ -11,11 +11,13 @@ use Inertia\Inertia;
 class NoteController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-
-        $notes = Note::latest()->get();
-
+        $notes = Note::when($request->term , function($query, $term){
+            $query->where('excerpt' , 'LIKE' , '%' . $term . '%');
+        })
+        ->latest()
+        ->get();
         return Inertia::render('Note/index', compact('notes'));
     }
 
