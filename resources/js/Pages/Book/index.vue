@@ -1,62 +1,35 @@
 <template>
     <app-layout>
         <template #header>
-            <h5>Books</h5>
-        </template>
-        
-        <div class="container">
-            <div class="d-flex bd-highlight">
-                <!-- División de texto | Division izquierda-->
-                <div class="p-2 flex-shrink-1 bd-highlight">                    
-                    <div class="d-flex flex-row bd-highlight mb-3 w-100">
-                        <div class="py-2 px-0 flex-fill bd-highlight">
-                            <h4>Listado de libros</h4>
-                        </div>
-                        <div class="py-2 pe-4 bd-highlight">
-                            <Link :href="route('books.create')" type="button" class="btn btn-outline-dark">
-                                <i class="bi bi-plus-circle"></i>
-                                Agregar Libro
-                            </Link>
-                        </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Books</h3>
+                </div>
+                <div class="col">
+                     <div class="input-group mb-3 w-100">
+                        <input v-model="term" type="text" class="form-control" placeholder="Buscar . . ."
+                         aria-label="Buscar" aria-describedby="basic-addon1">
                     </div>
-                        <p>
-                            Dar al clic de arriba para agregar libro
-                        </p>
                 </div>
-                <!-- División de tabla | Division derecha-->
-                <div class="p-2 w-100 bd-highlight">
-                    <!-- Tabla -->
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Titulo</th>
-                            <th scope="col">Acciones</th>                                                        
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="book in books">
-                            <td scope="row">{{ book.id }}</td>
-                            <td scope="row"></td>
-                            <td scope="row">{{ book.title }}</td>
-                            <td scope="row">
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <!-- Boton para Borrar Libro -->
-                                    <button type="button" class="btn btn-sm btn-outline-dark">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </button>
-                                    <!-- Botón para Ver Libro -->
-                                    <Link type="button" class="btn btn-outline-dark">
-                                        <i class="bi bi-three-dots"></i>
-                                    </Link>
-                                </div>
+                <div class="col">
+                    <Link :href="route('books.create')" type="button" class="btn btn-outline-dark w-100">
+                        <i class="bi bi-plus-circle"></i>
+                        Crear
+                    </Link>
+                </div>
+            </div>
+        </template>
 
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+        
+    
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div v-for="book in books" class="col mb-5">
+                <flip_card class="my-5"
+                    src="/images/PadreRicoPadrePobre.jpg"
+                    :title="book.title"
+                    :subtitle="book.author"
+                    >
+                </flip_card>
             </div>
         </div>
 
@@ -64,50 +37,16 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout.vue"
-import {Inertia} from "@inertiajs/inertia"
-import {Link} from "@inertiajs/inertia-vue3"
-import Swal from 'sweetalert2'
+import AppLayout from "@/Layouts/AppLayout.vue";
+import {Link} from "@inertiajs/inertia-vue3";
+import flip_card from "@/Components/flip_card";
 
 export default{
     props:{
         books: Object,
     },
-    components: { AppLayout, Link },
-
-    setup() {
-        const destroy = (note) => {
-            Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-            }).then((destroy) => {
-            if (destroy.isConfirmed) {
-                Inertia.delete(route('notes.destroy' , note))
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-            else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                Swal.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-                )
-            }
-            })                               
-        }
-        return {destroy}
-    }
+    components: { AppLayout, Link, flip_card, },
 }
 
 </script>
+

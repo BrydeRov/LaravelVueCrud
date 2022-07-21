@@ -59,6 +59,8 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <pagination :links="notes.links" />
                 </div>
             </div>
         </div>
@@ -71,12 +73,13 @@ import AppLayout from "@/Layouts/AppLayout.vue"
 import {Inertia} from "@inertiajs/inertia"
 import {Link} from "@inertiajs/inertia-vue3"
 import Swal from 'sweetalert2'
+import paginator from '@/Components/paginator'
 
 export default{
     props:{
         notes: Object,
     },
-    components: { AppLayout, Link },
+    components: { AppLayout, Link, paginator },
     data(){
         return{
             term: ''

@@ -33,19 +33,6 @@
                     <input v-model="form.pages" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Imagen</label>
-                    <input @input="form.image = $event.target.files[0]" type="file" class="form-control" id="inputGroupFile01">
-                    <progress v-if="form.progress" :value="form.progress.percentage" max="100">
-                        {{ form.progress.percentage }}%
-                    </progress>
-                </div>
-
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">PDF</label>
-                    <input type="file" class="form-control" id="inputGroupFile01">
-                </div>
-
                 <button class="btn my-4 btn-dark w-100" type="submit">Agregar</button>
                 
             </form>
@@ -72,10 +59,7 @@ export default{
 
 
         function submit() {
-            alert(props.book.image)
-            Inertia.post(route('books.store') , form, {
-                forceFormData: true,
-            });
+            Inertia.post(route('books.store') , form);
         }
 
         return {form , submit}

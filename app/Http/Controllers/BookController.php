@@ -33,7 +33,6 @@ class BookController extends Controller
 
     public function store(BookCreateRequest $request, Book $book)
     {
-        dd(request()->File('image'));
         if(request()->hasFile('image')){
             $book->$request->file('image')->store('BookImage' , 'public');
         }
