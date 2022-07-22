@@ -1,23 +1,16 @@
 <template>
 
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img :src="src" :alt="alt">
-            </div>
-            <div class="flip-card-back">
-                <img :src="src" :alt="alt">
-                <h3>{{subtitle ?? 'Aqui va el titulo'}}</h3>
-                <h1>{{title ?? 'Aqui va el subtitulo'}}</h1>
-                <button class="btn btn-outline-secondary my-2">{{button ?? 'Boton'}}</button>
-            </div>
-        </div>
-    </div>
-
+    <Link class="card" :href="href">
+        <div class="card-header" hidden>{{title}}</div>
+        <img :src="src" :alt="alt">
+        <p hidden>{{title}}</p>
+    </Link>
 </template>
 
 <script>
+import { Link } from '@inertiajs/inertia-vue3'
 export default{
+    components: {Link},
     props:{
         title: String,
         subtitle: String,
@@ -28,62 +21,21 @@ export default{
 }
 </script>
 
-<style></style><style>
-.flip-card{
-    background-color: transparent;
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
+<style>
+.card{
+    width: 85%;
+    height: 85%;
 }
-
-.flip-card-inner{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner{
-    transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back{
-    position: absolute;
-    width: 100%;
-    backface-visibility: hidden;
+.card img{
     border-radius: 16px;
+    min-width: 245px;
+    min-height: 370px;
+    object-fit: cover;
 }
 
-
-.flip-card-front img{
-    width: 225px;
-    margin-top: 1rem;
+.card img:hover{
+    transform: scale(1.04);
     border-radius: 16px;
-}
-
-.flip-card-back{
-    background-image: 
-    linear-gradient(
-        315deg, #141E30 , #45668B
-    );
-    color: #ffffff;
-    transform: rotateY(180deg);
-}
-
-.flip-card-back img{
-    width: 125px;
-    margin-top: 1rem;
-    border-radius: 16px;
-}
-
-.flip-card-back h3{
-    margin-bottom: 0.3rem;
-}
-
-.flip-card-back h1{
-    margin: 0;
+    border: solid rgb(209, 191, 191);
 }
 </style>

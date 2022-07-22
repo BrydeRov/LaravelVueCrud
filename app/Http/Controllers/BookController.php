@@ -9,23 +9,19 @@ use Inertia\Inertia;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $books = Book::all();
-        return Inertia::render('Book/index' , compact('books'));
 
+    public function index(Request $request)
+    {
+        $books = Book::when($request->term , function($query, $term){
+            $query->where('title' , 'LIKE' , '%' . $term . '%');
+        })
+        ->latest()
+        ->get();
+
+        return Inertia::render('Book/index' , compact('books'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return Inertia::render('Book/create');
@@ -40,46 +36,21 @@ class BookController extends Controller
         return redirect(route('books.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $books)
+    public function show(Book $book)
     {
-        //
+        return Inertia::render('Book/show' , compact('book'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Book $books)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Book $books)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Book $books)
     {
         //

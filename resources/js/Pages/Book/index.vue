@@ -6,28 +6,27 @@
                     <h3>Books</h3>
                 </div>
                 <div class="col">
-                     <div class="input-group mb-3 w-100">
+                    <div class="input-group mb-3 w-100">
                         <input v-model="term" type="text" class="form-control" placeholder="Buscar . . ."
-                         aria-label="Buscar" aria-describedby="basic-addon1">
+                            aria-label="Buscar" aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <div class="col">
                     <Link :href="route('books.create')" type="button" class="btn btn-outline-dark w-100">
-                        <i class="bi bi-plus-circle"></i>
-                        Crear
+                    <i class="bi bi-plus-circle"></i>
+                    Crear
                     </Link>
                 </div>
             </div>
         </template>
 
-        
-    
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div v-for="book in books" class="col mb-5">
-                <flip_card class="my-5"
-                    src="/images/PadreRicoPadrePobre.jpg"
+
+        <div class="row justify-content-center">
+            <div v-for="book in books" class="columnas col-sm-6 col-lg-3 mb-4">
+                <flip_card
+                    :src="book.image"
+                    :href="route('books.show' , book.id)"
                     :title="book.title"
-                    :subtitle="book.author"
                     >
                 </flip_card>
             </div>
@@ -39,6 +38,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {Link} from "@inertiajs/inertia-vue3";
+import {Inertia} from "@inertiajs/inertia"
 import flip_card from "@/Components/flip_card";
 
 export default{
@@ -46,7 +46,25 @@ export default{
         books: Object,
     },
     components: { AppLayout, Link, flip_card, },
+    data(){
+        return{
+            term: ''
+        }
+    },
+    watch:{
+        term: function (value){
+            Inertia.replace(route('books.index' , {term: value}))
+        }
+    },
 }
 
 </script>
 
+<style>
+    /* @media only screen and (max-width: 1199px){
+        .columnas{
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+    } */
+</style>
