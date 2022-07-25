@@ -23,7 +23,7 @@
 
         <div class="row justify-content-center">
             <div v-for="book in books" class="columnas col-sm-6 col-lg-3 mb-4">
-                <flip_card
+                <flip_card  
                     :src="book.image"
                     :href="route('books.show' , book.id)"
                     :title="book.title"
